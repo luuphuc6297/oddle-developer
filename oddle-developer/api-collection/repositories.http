@@ -1,0 +1,8 @@
+@baseUrl = http://localhost:8080/api
+
+# Repositories
+
+###
+
+# @name getAllRepoByUserId
+GET {{baseUrl}}/users/4d034755-eaab-48dd-907e-cf3abe78f6c6/repositories?_page=1&_limit=10&_sort=createdAt&_order=desc

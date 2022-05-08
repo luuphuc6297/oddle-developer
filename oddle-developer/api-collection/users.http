@@ -1,0 +1,15 @@
+@baseUrl = http://localhost:8080/api
+
+# Users
+
+# @name getAllUsers
+GET {{baseUrl}}/users?_page=1&_limit=10&_sort=mark&_order=desc
+
+###
+
+# @name getUserById
+GET {{baseUrl}}/users/03a8926a-dbb6-452d-b474-bca215d85fa5
+
+###
+# @name getUserByUserName
+GET {{baseUrl}}/users/adrian_wehner63
