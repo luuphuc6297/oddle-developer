@@ -34,6 +34,8 @@ const randomRepositoryList = (userList, numberOfRepositories) => {
                 userId: user.id,
                 id: faker.datatype.uuid(),
                 name: faker.commerce.productName(),
+                status: faker.helpers.arrayElement(["Public", "Private"]),
+                language: faker.helpers.arrayElement(["Javascript", "Python", "Java", "Golang", "C++"]),
                 description: faker.commerce.productDescription(),
                 createdAt: Date.now(),
                 updatedAt: Date.now(),
