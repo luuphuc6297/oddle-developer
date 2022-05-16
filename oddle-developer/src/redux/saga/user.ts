@@ -6,9 +6,7 @@ import { userActions } from 'redux/slices/user';
 
 function* fetchUserList(action: PayloadAction<ListParams>) {
     try {
-        console.log('action___user', action.payload);
         const response: ListResponse<User> = yield call(userApi.getAll, action.payload);
-        console.log('response___userlist', response);
         yield put(userActions.fetchUserListSuccess(response));
     } catch (error) {
         console.log('Failed to fetch user list', error);
@@ -19,7 +17,6 @@ function* fetchUserList(action: PayloadAction<ListParams>) {
 function* fetchUserByUserName(action: PayloadAction<string>) {
     try {
         const response: User = yield call(userApi.getByUserName, action.payload);
-        console.log('response___getuser', response);
         yield put(userActions.fetchUserByUserNameSuccess(response));
     } catch (error) {
         console.log('Failed to fetch user by username', error);

@@ -37,7 +37,6 @@ const userSlice = createSlice({
             state.loading = true;
         },
         fetchUserListSuccess(state, action: PayloadAction<ListResponse<User>>) {
-            console.log('action.payload__user', action.payload);
             state.list = action.payload.data;
             state.pagination = action.payload.pagination;
             state.loading = false;

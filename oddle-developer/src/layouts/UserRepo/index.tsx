@@ -1,16 +1,27 @@
 import { Box } from '@mui/material';
-import { SideBar } from 'components';
+import { RepositoryCard, SideBar } from 'components';
+import { Repository } from 'models';
 import React from 'react';
-
 interface IUserRepositories {
-    children?: any;
+    repositories: Repository[];
 }
 
-const UserRepositories = ({ children }: IUserRepositories) => {
+const UserRepositories = ({ repositories }: IUserRepositories) => {
     return (
         <Box sx={{ display: 'flex' }}>
             <SideBar />
-            <Box>This is repositories list</Box>
+            <Box>
+                {repositories &&
+                    repositories.map((repo) => (
+                        <RepositoryCard
+                            name={repo?.name}
+                            status={repo.status}
+                            description={repo.description}
+                            language={repo.language}
+                            updatedAt={repo.updatedAt}
+                        />
+                    ))}
+            </Box>
         </Box>
     );
 };

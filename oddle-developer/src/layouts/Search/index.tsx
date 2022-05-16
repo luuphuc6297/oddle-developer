@@ -1,5 +1,6 @@
-import { Box, FormControl, OutlinedInput } from '@mui/material';
-import { BootstrapBtn } from 'components';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import { Box, FormControl, Grid, MenuItem, OutlinedInput, Select, SelectChangeEvent } from '@mui/material';
+import { BootstrapBtn, CustomCaption, PageTitle } from 'components';
 import { ListParams } from 'models';
 import React, { ChangeEvent } from 'react';
 
@@ -23,6 +24,19 @@ const SearchLayout = ({ filter, onChange, onSearchChange }: ISearchUser) => {
         onSearchChange(newFilter);
     };
 
+    const handleSortChange = (e: SelectChangeEvent) => {
+        if (!onChange) return;
+
+        const value = e.target.value;
+        const [_sort, _order] = (value as string).split('.');
+        const newFilter: ListParams = {
+            ...filter,
+            _sort: _sort || undefined,
+            _order: (_order as 'asc' | 'desc') || undefined,
+        };
+        onChange(newFilter);
+    };
+
     const handleClearFilter = () => {
         if (!onChange) return;
 
@@ -41,15 +55,41 @@ const SearchLayout = ({ filter, onChange, onSearchChange }: ISearchUser) => {
 
     return (
         <Box>
-            <FormControl fullWidth variant="outlined" size="small">
-                <OutlinedInput
-                    id="searchByUserName"
-                    defaultValue={filter.username_like}
-                    onChange={handleSearchChange}
-                    inputRef={searchRef}
-                />
-            </FormControl>
-            <BootstrapBtn onClick={handleClearFilter}>Clear</BootstrapBtn>
+            <PageTitle>Find the user you need.</PageTitle>
+            <Grid container spacing={3}>
+                <Grid item xs={12} md={8}>
+                    <CustomCaption>Search by username</CustomCaption>
+                    <FormControl fullWidth variant="outlined" size="small">
+                        <OutlinedInput
+                            id="searchByUserName"
+                            defaultValue={filter.username_like}
+                            onChange={handleSearchChange}
+                            inputRef={searchRef}
+                            endAdornment={<SearchOutlinedIcon />}
+                        />
+                    </FormControl>
+                </Grid>
+
+                <Grid item xs={12} md={6} lg={2}>
+                    <FormControl variant="outlined" size="small" fullWidth>
+                        <CustomCaption>Sort</CustomCaption>
+                        <Select
+                            value={filter?._sort ? `${filter?._sort}.${filter?._order}` : ''}
+                            onChange={handleSortChange}
+                        >
+                            <MenuItem value="">
+                                <em>No sort</em>
+                            </MenuItem>
+
+                            <MenuItem value="name.asc">Name ASC</MenuItem>
+                            <MenuItem value="name.desc">Name DESC</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Grid>
+                <Grid item xs={12} md={4} lg={1}>
+                    <BootstrapBtn onClick={handleClearFilter}>Clear</BootstrapBtn>
+                </Grid>
+            </Grid>
         </Box>
     );
 };

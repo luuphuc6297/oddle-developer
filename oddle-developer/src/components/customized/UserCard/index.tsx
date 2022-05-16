@@ -1,16 +1,15 @@
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import { Avatar, Box, Button, Card, CardContent, Typography } from '@mui/material';
-import { green } from '@mui/material/colors';
+import { grey } from '@mui/material/colors';
 import { styled } from '@mui/system';
 import * as React from 'react';
-import { Link } from 'react-router-dom';
-
 interface IUserCard {
     name: string;
     userName: string;
     avatar?: string;
     description?: string;
     location?: string;
+    onDetail?: (userName: string) => void;
 }
 const StyledCard = styled(Card)({
     width: 752,
@@ -19,6 +18,7 @@ const StyledCard = styled(Card)({
     display: 'flex',
     boxShadow: '0 0 10px 0 rgb(95 125 149 / 30%)',
     justifyContent: 'space-between',
+    marginBottom: 24,
     '&:hover': {
         transform: 'translateY(-10px)',
         transition: 'transform 550ms',
@@ -39,7 +39,7 @@ const StyledCardContent = styled(CardContent)({
     },
 });
 
-const Name = styled(Link)(({ theme }) => ({
+const Name = styled(Button)(({ theme }) => ({
     lineHeight: '24px',
     fontSize: 20,
     color: '#0C192D',
@@ -47,6 +47,7 @@ const Name = styled(Link)(({ theme }) => ({
     textAlign: 'left',
     textDecoration: 'none',
     '&:hover': {
+        backgroundColor: 'transparent',
         color: theme.palette.grey[500],
     },
 }));
@@ -85,15 +86,15 @@ const FollowBtn = styled(Button)({
     color: '#bdbdbd',
 });
 
-export const RecipeReviewCard = ({ name, avatar, userName, description, location }: IUserCard) => {
+export const RecipeReviewCard = ({ name, avatar, userName, description, location, onDetail }: IUserCard) => {
     return (
         <StyledCard>
             <InfoBox>
                 <AvatarBox>
-                    <Avatar sx={{ bgcolor: green[500] }} aria-label="recipe" src={avatar} />
+                    <Avatar sx={{ bgcolor: grey[500] }} aria-label="recipe" src={avatar} />
                 </AvatarBox>
                 <StyledCardContent>
-                    <Name to={`users/${userName}`}>{name}</Name>
+                    <Name onClick={() => onDetail?.(userName)}>{name}</Name>
                     <UserName>{userName}</UserName>
                     <Description>{description}</Description>
                     <Location>

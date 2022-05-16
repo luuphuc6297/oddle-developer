@@ -5,3 +5,4 @@ export * from './base/SideBar';
 
 export * from './styled';
 export * from './customized/UserCard';
+export * from './customized/RepositoryCard';

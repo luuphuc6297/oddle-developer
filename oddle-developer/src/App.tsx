@@ -1,6 +1,6 @@
 import Aos from 'aos';
 import React from 'react';
-import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 const UserRepoContainer = React.lazy(() => import('containers/UserRepo'));
 const Users = React.lazy(() => import('containers/Users'));

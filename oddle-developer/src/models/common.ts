@@ -11,8 +11,8 @@ export interface ListResponse<T> {
 
 export interface ListParams {
     id?: string;
-    _page?: number;
-    _limit?: number;
+    _page: number;
+    _limit: number;
     _sort?: string;
     _order?: 'asc' | 'desc';
 

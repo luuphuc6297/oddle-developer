@@ -13,7 +13,7 @@ const StyledBootstrapBtn = styled(Button)({
 
 export const BootstrapBtn = ({ children, onClick, ...props }: IBootstrapBtn) => {
     return (
-        <StyledBootstrapBtn {...props} onClick={onClick}>
+        <StyledBootstrapBtn {...props} onClick={onClick} variant="outlined">
             {children}
         </StyledBootstrapBtn>
     );

@@ -31,7 +31,6 @@ const repositorySlice = createSlice({
             state.loading = true;
         },
         fetchRepositoryListSuccess(state, action: PayloadAction<ListResponse<Repository>>) {
-            console.log('action.payload', action.payload.data);
             state.list = action.payload.data;
             state.pagination = action.payload.pagination;
             state.loading = false;

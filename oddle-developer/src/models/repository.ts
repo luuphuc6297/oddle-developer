@@ -3,6 +3,8 @@ export interface Repository {
     userId: string;
     name: string;
     description?: string;
+    status?: string;
+    language?: string;
     thumbnailUrl?: string;
     createdAt?: number;
     updatedAt?: number;

@@ -12,10 +12,16 @@ import {
     Tooltip,
     Typography
 } from '@mui/material';
+import { styled } from '@mui/system';
 import * as React from 'react';
+
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
+const StyledAppBar = styled(AppBar)({
+    marginBottom: '32px',
+});
 
 export const ResponsiveAppBar = () => {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -37,7 +43,7 @@ export const ResponsiveAppBar = () => {
     };
 
     return (
-        <AppBar position="static">
+        <StyledAppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Typography variant="h6" noWrap component="div" sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}>
@@ -131,6 +137,6 @@ export const ResponsiveAppBar = () => {
                     </Box>
                 </Toolbar>
             </Container>
-        </AppBar>
+        </StyledAppBar>
     );
 };
