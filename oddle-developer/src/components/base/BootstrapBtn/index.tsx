@@ -9,6 +9,7 @@ interface IBootstrapBtn {
 
 const StyledBootstrapBtn = styled(Button)({
     textTransform: 'none',
+    width: '100%',
 });
 
 export const BootstrapBtn = ({ children, onClick, ...props }: IBootstrapBtn) => {

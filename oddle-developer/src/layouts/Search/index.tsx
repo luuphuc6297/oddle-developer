@@ -56,7 +56,7 @@ const SearchLayout = ({ filter, onChange, onSearchChange }: ISearchUser) => {
     return (
         <Box>
             <PageTitle>Find the user you need.</PageTitle>
-            <Grid container spacing={3}>
+            <Grid container spacing={3} justifyContent="space-between">
                 <Grid item xs={12} md={8}>
                     <CustomCaption>Search by username</CustomCaption>
                     <FormControl fullWidth variant="outlined" size="small">
@@ -86,7 +86,7 @@ const SearchLayout = ({ filter, onChange, onSearchChange }: ISearchUser) => {
                         </Select>
                     </FormControl>
                 </Grid>
-                <Grid item xs={12} md={4} lg={1}>
+                <Grid item xs={12} md={4} lg={1} alignItems="flex-end" style={{ display: 'flex' }}>
                     <BootstrapBtn onClick={handleClearFilter}>Clear</BootstrapBtn>
                 </Grid>
             </Grid>
